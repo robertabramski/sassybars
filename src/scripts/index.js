@@ -1,3 +1,3 @@
 let hello = require('./hello');
 
-hello('World');
+hello('Sassybars');
