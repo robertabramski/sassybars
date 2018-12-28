@@ -6,6 +6,8 @@ let rename = require('gulp-rename');
 let bundler = require('bundle-through');
 let handlebars = require('gulp-compile-handlebars');
 
+bulbo.asset('./src/assets/**/*.*');
+
 bulbo.asset('./src/styles/index.scss')
   .watch('./src/styles/*.scss')
   .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
