@@ -1,5 +1,5 @@
 {
-  "name": "sass-handlebars-ssg",
+  "name": "sassybars",
   "version": "0.1.0",
   "description": "Static site generator using Sass and Handlebars.",
   "author": "Robert Abramski",
