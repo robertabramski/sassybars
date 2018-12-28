@@ -1,3 +1,3 @@
 module.exports = function(text) {
-  console.log(`Helllo ${text}`);
+  console.log(`Hello ${text}`);
 };
