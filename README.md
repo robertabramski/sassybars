@@ -4,7 +4,7 @@ A static site generator using [Sass](http://sass-lang.com/) and [Handlebars](htt
 
 ## Requirements
 
-To run the commands, Bulbo must be installed globally. Run `npm install -g bulbo` to install. All other dependencies can be installed with `npm install`.
+All dependencies can be installed with `npm install`.
 
 ## Usage
 
@@ -20,4 +20,4 @@ During development, a server can be run to host the files locally. To start the 
 
 ## Production
 
-To create the static site production bundle, run `npm run build` for a clean build. Running `bulbo build` will also create a build, but without cleaning the `dist` directory.
+To create the static site production bundle, run `npm run build` for a clean build.
