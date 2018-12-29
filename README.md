@@ -20,4 +20,4 @@ During development, a server can be run to host the files locally. To start the 
 
 ## Production
 
-To create the static site production bundle, run `npm run build` for a clean build.
+To create the static site production bundle, run `npm run build` for a clean build. To minify all files, set the `NODE_ENV` to `production` and run `npm run build`.
