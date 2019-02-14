@@ -1,4 +1,7 @@
+[nodePath, scriptPath, command, ...args] = process.argv;
+
 const PRODUCTION = process.env['NODE_ENV'] === 'production';
+const CMD = command, CMD_SERVE = 'serve', CMD_BUILD = 'build';
 
 let fs = require('fs');
 let bulbo = require('bulbo');
@@ -33,11 +36,13 @@ bulbo.asset('./src/pages/*.html')
   .pipe(handlebars(null, {batch: ['./src/partials']}))
   .pipe(gulpIf(PRODUCTION, htmlMin({collapseWhitespace: true})));
 
-bulbo.addMiddleware(() => require('connect-livereload')());
-bulbo.asset('./src/**/*.*').pipe(livereload({
-  start: true,
-  quiet: true
-}));
+if(CMD === CMD_SERVE) {
+  bulbo.addMiddleware(() => require('connect-livereload')());
+  bulbo.asset('./src/**/*.*').pipe(livereload({
+    start: true,
+    quiet: true
+  }));
+}
 
 bulbo.dest('dist');
 bulbo.port(8080);
