@@ -9,6 +9,7 @@ let rename = require('gulp-rename');
 let terser = require('gulp-terser');
 let htmlMin = require('gulp-htmlmin');
 let bundler = require('bundle-through');
+let livereload = require('gulp-livereload');
 let handlebars = require('gulp-compile-handlebars');
 
 bulbo.asset('./src/assets/**/*.*');
@@ -30,7 +31,13 @@ bulbo.asset('./src/pages/*.html')
     return JSON.parse(fs.readFileSync('./src/data.json').toString());
   }))
   .pipe(handlebars(null, {batch: ['./src/partials']}))
-  .pipe(gulpIf(PRODUCTION, htmlMin({collapseWhitespace: true})))
+  .pipe(gulpIf(PRODUCTION, htmlMin({collapseWhitespace: true})));
+
+bulbo.addMiddleware(() => require('connect-livereload')());
+bulbo.asset('./src/**/*.*').pipe(livereload({
+  start: true,
+  quiet: true
+}));
 
 bulbo.dest('dist');
 bulbo.port(8080);
