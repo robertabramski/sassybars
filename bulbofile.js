@@ -67,7 +67,10 @@ bulbo.asset(PAGES_GLOB)
     });
   }())
   .pipe(data(file => {
-    return JSON.parse(fs.readFileSync(DATA_FILE).toString());
+    return Object.assign(JSON.parse(fs.readFileSync(DATA_FILE).toString()), {
+      OUTPUT_STYLE_FILENAME: OUTPUT_STYLE_FILENAME,
+      OUTPUT_SCRIPT_FILENAME: OUTPUT_SCRIPT_FILENAME
+    });
   }))
   .pipe(handlebars(null))
   .pipe(gulpIf(PRODUCTION, htmlMin({collapseWhitespace: true})));
