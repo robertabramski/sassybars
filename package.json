@@ -1,6 +1,6 @@
 {
   "name": "sassybars",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Static site generator using Sass and Handlebars.",
   "author": "Robert Abramski",
   "main": "bulbofile.js",
