@@ -20,11 +20,11 @@ During development, a live reload server can be run to host the files locally. T
 
 ## File Structure
 
-TODO
-
+The file structure has been setup for ease of use, not scalability. This framework was created with the intention of being a basic boilerplate for simple sites consisting of a few static pages. By default, the framework does not recursively search directories. This can be modified with glob strings if needed for further organization of directories. If globs are modified consider a few points. Automatic partial registration only takes the file name into account, not the directory it exists in, so partial sub directories file names have to be unique as if the directory was flat. Page sub directories will copy over their directories when compiled, breaking links unless taken into consideration.
+ 
 ## Conventions
 
-TODO
+All script and style files should be required into the main index files for inclusion into the final payloads. It is presumed that all  partials are uniquely named so there will be no naming collisions.
 
 ## About the Data File
 
@@ -32,7 +32,7 @@ The `src/data.json` contains all the data that will be output. There are two typ
 
 ## About the Config File
 
-The `sassybars.json` contains basic configurable information about the application. By default, Sassybars does not recursively search directories. This can be changed by editing the glob strings. Directory names can also be changed with the glob strings. Keep in mind, if the partials directory is made recursive, the partial name will be the name of the file without the directory. Unexpected results may occur if more than one partial has the same file name. It is recommended to use partial directories for organization not modularity.
+The `sassybars.json` contains basic configurable information about the application. By default, Sassybars does not recursively search directories. This can be changed by editing the glob strings. Directory names can also be changed with the glob strings. Keep in mind, if the partials directory is made recursive, the partial name will be the name of the file without the directory. Unexpected results may occur if more than one partial has the same file name.
 
 ## Production
 
