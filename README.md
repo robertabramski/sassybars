@@ -16,7 +16,7 @@ git clone --depth=1 --branch=master git@github.com:robertabramski/sassybars.git 
 
 ## Development
 
-During development, a live reload server can be run to host the files locally. To start the server run `npm start` or `npm run server`. Then, navigate the browser to `http://localhost:8080`. The port can be reconfigured in the `bulbofile.js`.
+During development, a live reload server can be run to host the files locally. To start the server run `npm start` or `npm run server`. Then, navigate the browser to `http://localhost:8080`. The port can be reconfigured in the `sassybars.json`.
 
 ## File Structure
 
