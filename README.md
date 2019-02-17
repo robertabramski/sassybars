@@ -32,7 +32,7 @@ The `src/data.json` contains all the data that will be output. There are two typ
 
 ## About the Config File
 
-The `sassybars.json` contains basic configurable information about the application. By default, Sassybars does not recursively search directories. This can be changed by editing the glob strings. Directory names can also be changed with the glob strings. Keep in mind, if the partials directory is made recursive, the partial name will be the name of the file without the directory. Unexpected results may occur if more than one partial has the same file name. It is recommended to use partial directories for organization not modularity. Also, note if `OUTPUT_DIRECTORY` is changed, the `npm run clean` will need to be updated to the correct directory name to work.
+The `sassybars.json` contains basic configurable information about the application. By default, Sassybars does not recursively search directories. This can be changed by editing the glob strings. Directory names can also be changed with the glob strings. Keep in mind, if the partials directory is made recursive, the partial name will be the name of the file without the directory. Unexpected results may occur if more than one partial has the same file name. It is recommended to use partial directories for organization not modularity.
 
 ## Production
 

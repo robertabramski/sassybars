@@ -5,6 +5,7 @@ const CMD = command, CMD_SERVE = 'serve', CMD_BUILD = 'build';
 const CONFIG_FILE = './sassybars.json';
 
 let fs = require('fs');
+let del = require('del');
 let path = require('path');
 let glob = require('glob');
 let bulbo = require('bulbo');
@@ -22,6 +23,7 @@ let config = JSON.parse(fs.readFileSync(CONFIG_FILE).toString());
 
 const SERVER_PORT = config['SERVER_PORT'];
 const OUTPUT_DIRECTORY = config['OUTPUT_DIRECTORY'];
+const CLEAN_OUTPUT_DIR = config['CLEAN_OUTPUT_DIR'];
 const DATA_FILE = config['DATA_FILE'];
 const OUTPUT_STYLE_FILENAME = config['OUTPUT_STYLE_FILENAME'];
 const OUTPUT_SCRIPT_FILENAME = config['OUTPUT_SCRIPT_FILENAME'];
@@ -33,6 +35,10 @@ const SCRIPTS_GLOB = config['SCRIPTS_GLOB'];
 const STYLES_GLOB = config['STYLES_GLOB'];
 const PARTIALS_GLOB = config['PARTIALS_GLOB'];
 const LIVERELOAD_GLOB = config['LIVERELOAD_GLOB'];
+
+if(CMD === CMD_BUILD && CLEAN_OUTPUT_DIR) {
+  del.sync(`${OUTPUT_DIRECTORY}/*`);
+}
 
 bulbo.asset(ASSETS_GLOB);
 

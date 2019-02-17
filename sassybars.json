@@ -1,6 +1,7 @@
 {
   "SERVER_PORT": 8080,
   "OUTPUT_DIRECTORY": "dist",
+  "CLEAN_OUTPUT_DIR": true,
   "DATA_FILE": "./src/data.json",
   "OUTPUT_STYLE_FILENAME": "style.css",
   "OUTPUT_SCRIPT_FILENAME": "script.js",
