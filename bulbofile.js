@@ -19,10 +19,13 @@ const PRODUCTION = process.env['NODE_ENV'] === 'production';
 const CMD = command, CMD_SERVE = 'serve', CMD_BUILD = 'build';
 
 let fs = require('fs');
+let path = require('path');
+let glob = require('glob');
 let bulbo = require('bulbo');
 let data = require('gulp-data');
 let sass = require('gulp-sass');
 let gulpIf = require('gulp-if');
+let through = require('through2');
 let rename = require('gulp-rename');
 let terser = require('gulp-terser');
 let htmlMin = require('gulp-htmlmin');
@@ -46,9 +49,6 @@ bulbo.asset(SCRIPT_INDEX)
 bulbo.asset(PAGES_GLOB)
   .watch(PAGES_GLOB, PARTIALS_GLOB, DATA_FILE)
   .pipe(function() {
-    let path = require('path');
-    let glob = require('glob');
-    let through = require('through2');
     let Handlebars = handlebars.Handlebars;
 
     return through.obj(function(file, enc, cb) {
@@ -67,7 +67,24 @@ bulbo.asset(PAGES_GLOB)
     });
   }())
   .pipe(data(file => {
-    return Object.assign(JSON.parse(fs.readFileSync(DATA_FILE).toString()), {
+    let data = JSON.parse(fs.readFileSync(DATA_FILE).toString());
+    let pageFileName = path.basename(file.path);
+    let pageData = data[pageFileName];
+    let envData = {};
+
+    Object.keys(data).forEach(key => {
+      if(!key.includes('.')) {
+        envData[key] = data[key];
+      }
+    });
+
+    if(pageData) {
+      Object.keys(pageData).forEach(pageKey => {
+        envData[pageKey] = pageData[pageKey];
+      });
+    }
+
+    return Object.assign(envData, {
       OUTPUT_STYLE_FILENAME: OUTPUT_STYLE_FILENAME,
       OUTPUT_SCRIPT_FILENAME: OUTPUT_SCRIPT_FILENAME
     });

@@ -1,3 +1,8 @@
 {
-  "title": "Welcome to Sassybars"
+  "title": "Welcome",
+  "message": "Welcome to Sassybars.",
+
+  "index.html": {
+    "title": "Sassybars"
+  }
 }
