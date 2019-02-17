@@ -1,22 +1,8 @@
 [nodePath, scriptPath, command, ...args] = process.argv;
 
-const SERVER_PORT = 8080;
-const OUTPUT_DIRECTORY = 'dist';
-const OUTPUT_STYLE_FILENAME = 'style.css';
-const OUTPUT_SCRIPT_FILENAME = 'script.js';
-
-const DATA_FILE = './src/data.json';
-const STYLE_INDEX = './src/styles/index.scss';
-const SCRIPT_INDEX = './src/scripts/index.js';
-const LIVERELOAD_GLOB = './src/**/*.*';
-const PAGES_GLOB = './src/pages/*.html';
-const ASSETS_GLOB = './src/assets/**/*.*';
-const SCRIPTS_GLOB = './src/scripts/*.js';
-const STYLES_GLOB = './src/styles/*.scss';
-const PARTIALS_GLOB = './src/partials/*.html';
-
 const PRODUCTION = process.env['NODE_ENV'] === 'production';
 const CMD = command, CMD_SERVE = 'serve', CMD_BUILD = 'build';
+const CONFIG_FILE = './sassybars.json';
 
 let fs = require('fs');
 let path = require('path');
@@ -32,6 +18,21 @@ let htmlMin = require('gulp-htmlmin');
 let bundler = require('bundle-through');
 let livereload = require('gulp-livereload');
 let handlebars = require('gulp-compile-handlebars');
+let config = JSON.parse(fs.readFileSync(CONFIG_FILE).toString());
+
+const SERVER_PORT = config['SERVER_PORT'];
+const OUTPUT_DIRECTORY = config['OUTPUT_DIRECTORY'];
+const DATA_FILE = config['DATA_FILE'];
+const OUTPUT_STYLE_FILENAME = config['OUTPUT_STYLE_FILENAME'];
+const OUTPUT_SCRIPT_FILENAME = config['OUTPUT_SCRIPT_FILENAME'];
+const STYLE_INDEX = config['STYLE_INDEX'];
+const SCRIPT_INDEX = config['SCRIPT_INDEX'];
+const PAGES_GLOB = config['PAGES_GLOB'];
+const ASSETS_GLOB = config['ASSETS_GLOB'];
+const SCRIPTS_GLOB = config['SCRIPTS_GLOB'];
+const STYLES_GLOB = config['STYLES_GLOB'];
+const PARTIALS_GLOB = config['PARTIALS_GLOB'];
+const LIVERELOAD_GLOB = config['LIVERELOAD_GLOB'];
 
 bulbo.asset(ASSETS_GLOB);
 

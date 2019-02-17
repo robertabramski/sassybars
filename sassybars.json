@@ -1,0 +1,15 @@
+{
+  "SERVER_PORT": 8080,
+  "OUTPUT_DIRECTORY": "dist",
+  "DATA_FILE": "./src/data.json",
+  "OUTPUT_STYLE_FILENAME": "style.css",
+  "OUTPUT_SCRIPT_FILENAME": "script.js",
+  "STYLE_INDEX": "./src/styles/index.scss",
+  "SCRIPT_INDEX": "./src/scripts/index.js",
+  "PAGES_GLOB": "./src/pages/*.html",
+  "ASSETS_GLOB": "./src/assets/**/*.*",
+  "SCRIPTS_GLOB": "./src/scripts/*.js",
+  "STYLES_GLOB": "./src/styles/*.scss",
+  "PARTIALS_GLOB": "./src/partials/*.html",
+  "LIVERELOAD_GLOB": "./src/**/*.*"
+}
