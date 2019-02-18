@@ -2,7 +2,8 @@
 
 const PRODUCTION = process.env['NODE_ENV'] === 'production';
 const CMD = command, CMD_SERVE = 'serve', CMD_BUILD = 'build';
-const CONFIG_FILE = './sassybars.json';
+const CONFIG_FILE = './sassybars.config.json';
+const HELPERS_FILE = './sassybars.helpers.js';
 
 let fs = require('fs');
 let del = require('del');
@@ -20,6 +21,7 @@ let bundler = require('bundle-through');
 let livereload = require('gulp-livereload');
 let handlebars = require('gulp-compile-handlebars');
 let config = JSON.parse(fs.readFileSync(CONFIG_FILE).toString());
+let helpers = require(HELPERS_FILE);
 
 const SERVER_PORT = config['SERVER_PORT'];
 const OUTPUT_DIRECTORY = config['OUTPUT_DIRECTORY'];
@@ -96,7 +98,7 @@ bulbo.asset(PAGES_GLOB)
       OUTPUT_SCRIPT_FILENAME: OUTPUT_SCRIPT_FILENAME
     });
   }))
-  .pipe(handlebars(null))
+  .pipe(handlebars(null, {helpers: helpers}))
   .pipe(gulpIf(PRODUCTION, htmlMin({collapseWhitespace: true})));
 
 if(CMD === CMD_SERVE) {
