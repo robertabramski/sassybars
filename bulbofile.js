@@ -18,6 +18,7 @@ let rename = require('gulp-rename');
 let terser = require('gulp-terser');
 let htmlMin = require('gulp-htmlmin');
 let bundler = require('bundle-through');
+let htmlTidy = require('gulp-htmltidy');
 let livereload = require('gulp-livereload');
 let handlebars = require('gulp-compile-handlebars');
 let config = JSON.parse(fs.readFileSync(CONFIG_FILE).toString());
@@ -37,6 +38,8 @@ const SCRIPTS_GLOB = config['SCRIPTS_GLOB'];
 const STYLES_GLOB = config['STYLES_GLOB'];
 const PARTIALS_GLOB = config['PARTIALS_GLOB'];
 const LIVERELOAD_GLOB = config['LIVERELOAD_GLOB'];
+const HTML_LINT_OPTIONS = config['HTML_LINT_OPTIONS'];
+const USE_HTML_LINT = config['USE_HTML_LINT'];
 
 if(CMD === CMD_BUILD && CLEAN_OUTPUT_DIR) {
   del.sync(`${OUTPUT_DIRECTORY}/*`);
@@ -99,6 +102,7 @@ bulbo.asset(PAGES_GLOB)
     });
   }))
   .pipe(handlebars(null, {helpers: helpers}))
+  .pipe(gulpIf(!PRODUCTION && USE_HTML_LINT, htmlTidy(HTML_LINT_OPTIONS)))
   .pipe(gulpIf(PRODUCTION, htmlMin({collapseWhitespace: true})));
 
 if(CMD === CMD_SERVE) {

@@ -12,5 +12,12 @@
   "SCRIPTS_GLOB": "./src/scripts/*.js",
   "STYLES_GLOB": "./src/styles/*.scss",
   "PARTIALS_GLOB": "./src/partials/*.html",
-  "LIVERELOAD_GLOB": "./src/**/*.*"
+  "LIVERELOAD_GLOB": "./src/**/*.*",
+  "USE_HTML_LINT": true,
+  "HTML_LINT_OPTIONS": {
+    "indent": "auto",
+    "tidyMark": "no",
+    "indentSpaces": 2,
+    "wrap": 80
+  }
 }
