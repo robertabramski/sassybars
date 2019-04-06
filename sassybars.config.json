@@ -14,10 +14,15 @@
   "PARTIALS_GLOB": "./src/partials/*.html",
   "LIVERELOAD_GLOB": "./src/**/*.*",
   "USE_HTML_TIDY": true,
+  "USE_HTML_MIN": false,
   "HTML_TIDY_OPTIONS": {
     "indent": "auto",
     "tidyMark": "no",
     "indentSpaces": 2,
     "wrap": 80
+  },
+  "HTML_MIN_OPTIONS": {
+    "collapseWhitespace": true,
+    "minifyCSS": true
   }
 }

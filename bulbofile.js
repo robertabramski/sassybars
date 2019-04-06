@@ -40,6 +40,8 @@ const PARTIALS_GLOB = config['PARTIALS_GLOB'];
 const LIVERELOAD_GLOB = config['LIVERELOAD_GLOB'];
 const HTML_TIDY_OPTIONS = config['HTML_TIDY_OPTIONS'];
 const USE_HTML_TIDY = config['USE_HTML_TIDY'];
+const USE_HTML_MIN = config['USE_HTML_MIN'];
+const HTML_MIN_OPTIONS = config['HTML_MIN_OPTIONS'];
 
 if(CMD === CMD_BUILD && CLEAN_OUTPUT_DIR) {
   del.sync(`${OUTPUT_DIRECTORY}/*`);
@@ -102,8 +104,8 @@ bulbo.asset(PAGES_GLOB)
     });
   }))
   .pipe(handlebars(null, {helpers: helpers}))
-  .pipe(gulpIf(PRODUCTION, htmlMin({collapseWhitespace: true})));
   .pipe(gulpIf(!PRODUCTION && USE_HTML_TIDY, htmlTidy(HTML_TIDY_OPTIONS)))
+  .pipe(gulpIf(PRODUCTION && USE_HTML_MIN, htmlMin(HTML_MIN_OPTIONS)));
 
 if(CMD === CMD_SERVE) {
   bulbo.addMiddleware(() => require('connect-livereload')());
