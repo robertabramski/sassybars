@@ -14,7 +14,7 @@
   "PARTIALS_GLOB": "./src/partials/*.html",
   "LIVERELOAD_GLOB": "./src/**/*.*",
   "USE_HTML_TIDY": true,
-  "USE_HTML_MIN": false,
+  "USE_HTML_MIN": true,
   "HTML_TIDY_OPTIONS": {
     "indent": "auto",
     "tidyMark": "no",
