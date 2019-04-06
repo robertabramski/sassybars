@@ -13,8 +13,8 @@
   "STYLES_GLOB": "./src/styles/*.scss",
   "PARTIALS_GLOB": "./src/partials/*.html",
   "LIVERELOAD_GLOB": "./src/**/*.*",
-  "USE_HTML_LINT": true,
-  "HTML_LINT_OPTIONS": {
+  "USE_HTML_TIDY": true,
+  "HTML_TIDY_OPTIONS": {
     "indent": "auto",
     "tidyMark": "no",
     "indentSpaces": 2,
